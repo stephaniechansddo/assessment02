@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sddevops</groupId>
+	<artifactId>assessment</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>assessment</name>
+	<!-- FIXME change it to the project's website -->
+	<url>http://www.example.com</url>
+
+	<properties>
+			<!-- CHANGED MAVEN.COMPILER FROM 1.7 TO 1.8-->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+			<!-- ADDED SELENIUM & TEST NG-->
+		<selenium.groupId>org.seleniumhq.selenium</selenium.groupId>
+		<selenium.artifactId>selenium-java</selenium.artifactId>
+		<selenium.version>2.53.1</selenium.version>
+		<testng.groupId>org.testng</testng.groupId>
+		<testng.artifactId>testng</testng.artifactId>
+		<testng.version>6.9.10</testng.version>
+
+		<!-- ADDED JUNIT JUPITER -->
+		<junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+		<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+
+		<!-- jacoco properties -->
+		<jacoco.groupId>org.jacoco</jacoco.groupId>
+		<jacoco.artifactId>jacoco-maven-plugin</jacoco.artifactId>
+		<jacoco.version>0.8.7</jacoco.version>
+
+		<!-- SonarQube properties -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.language>java</sonar.language>
+		<junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+		<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+	</properties>
+
+	<dependencies>
+		<!-- ADDED JUNIT DEPENDENCY -->
+		<dependency>
+			<groupId>${junit-jupiter.groupId}</groupId>
+			<artifactId>${junit-jupiter.artifactId}</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- ADDED SELENIUM DEPENDENCY -->
+		<dependency>
+			<groupId>${selenium.groupId}</groupId>
+			<artifactId>${selenium.artifactId}</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<!-- ADDED TEST NG DEPENDENCY -->
+		<dependency>
+			<groupId>${testng.groupId}</groupId>
+			<artifactId>${testng.artifactId}</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- REMOVED PLUGIN MANAGEMENT -->
+		<!-- <pluginManagement> --> <!-- lock down plugins versions to avoid using Maven
+			defaults (may be moved to parent pom) -->
+		<plugins>
+			<!-- clean lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+
+			<!-- ADDED JACACO & MAVEN INTEGRATION PLUGIN-->
+			<plugin>
+				<groupId>${jacoco.groupId}</groupId>
+				<artifactId>${jacoco.artifactId}</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<formats>XML</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- ADDED MAVEN COMPILER PLUGIN -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>11</release>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+			<!-- default lifecycle, jar packaging: see
+			https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<!-- REMOVE MAVEN PLUGIN
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+			-->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<!-- site lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+		</plugins>
+		<!-- </pluginManagement> -->
+	</build>
+</project>
