@@ -33,6 +33,7 @@ pipeline {
 					echo "Start Sonar"
 					bat "mvn sonar:sonar"
 				}
+				}
 			}
 		}
 	}
