@@ -4,33 +4,35 @@ pipeline {
 		maven 'maven 3.9.6'
 		jdk 'openjdk11'
 	}
-	stages{
-		stage("Clean"){
-			steps{
+	stages {
+		stage("Clean") {
+			steps {
 				echo "Start Clean"
 				bat "mvn clean"
 				echo "Maven clean is completed"
 			}
 		}
-		stage("Test"){
-			steps{
+		stage("Test") {
+			steps {
 				echo "Start Test"
 				bat "mvn test"
 				echo "Maven test is completed"
 			}
 		}
-		stage("build & sonar"){
+		stage("Build & Sonar") {
 			parallel {
-				steps{
+				steps {
 					echo "Start build"
 					bat "mvn install -DskipTests"
 					echo "Maven build is completed"
 				}
 			}
-			steps{
-				echo "Start Sonar"
-				bat "mvn sonar:sonar"
-			}
+			//stage("Sonar") {
+				steps{
+					echo "Start Sonar"
+					bat "mvn sonar:sonar"
+				}
+			//}
 		}
 	}
 }
