@@ -5,22 +5,33 @@ pipeline {
 		jdk 'openjdk11'
 	}
 	stages{
-		stage("clean"){
+		stage("Clean"){
 			steps{
 				echo "Start Clean"
 				bat "mvn clean"
+				echo "Maven clean is completed"
 			}
 		}
-		stage("test"){
+		stage("Test"){
 			steps{
 				echo "Start Test"
 				bat "mvn test"
+				echo "Maven test is completed"
 			}
 		}
-		stage("build"){
-			steps{
-				echo "Start build"
-				bat "mvn install -DskipTests"
+		stage("build & sonar"){
+			parallel {
+				steps{
+					echo "Start build"
+					bat "mvn install -DskipTests"
+					echo "Maven build is completed"
+				}
+			}
+			stage("Sonar"){
+				steps{
+					echo "Start Sonar"
+					bat "mvn sonar:sonar"
+				}
 			}
 		}
 	}
