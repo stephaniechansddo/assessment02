@@ -28,7 +28,6 @@ pipeline {
 						echo "Maven build is completed"
 					}
 				}
-			}
 			stage("Sonar") {
 				steps{
 					echo "Start Sonar"
