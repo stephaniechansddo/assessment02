@@ -21,18 +21,20 @@ pipeline {
 		}
 		stage("Build & Sonar") {
 			parallel {
-				steps {
-					echo "Start build"
-					bat "mvn install -DskipTests"
-					echo "Maven build is completed"
+				stage("Build") {
+					steps {
+						echo "Start build"
+						bat "mvn install -DskipTests"
+						echo "Maven build is completed"
+					}
 				}
 			}
-			//stage("Sonar") {
+			stage("Sonar") {
 				steps{
 					echo "Start Sonar"
 					bat "mvn sonar:sonar"
 				}
-			//}
+			}
 		}
 	}
 }
