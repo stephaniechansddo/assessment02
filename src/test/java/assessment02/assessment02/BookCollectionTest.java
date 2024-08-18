@@ -15,7 +15,6 @@ import org.openqa.selenium.WebElement;
 
 class BookCollectionTest {
 
-
     private static WebDriver webDriver;
     private static final String BASE_URL = "C:\\Users\\StephChan\\git\\assessment02\\files\\Library.html";
     private BookCollection bc;
