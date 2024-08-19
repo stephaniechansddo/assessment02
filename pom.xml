@@ -8,7 +8,7 @@
 	<groupId>com.sddevops</groupId>
 	<artifactId>assessment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	 <packaging>war</packaging>
+	<!-- <packaging>war</packaging>-->
 	<name>assessment</name>
 	<!-- change it to the project's website -->
 
