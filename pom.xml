@@ -81,11 +81,6 @@
 				https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 			
 			<!-- ADDED AUTOMATED TESTNG PLUGIN-->
-
-<plugin>            
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-war-plugin</artifactId>
-</plugin>
 			
 			<plugin>
 				<artifactId>maven-sunfire-plugin</artifactId>
@@ -130,6 +125,10 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
